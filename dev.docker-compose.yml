@@ -1,0 +1,30 @@
+version: "3.7"
+services:
+  api:
+    restart: always
+    labels:
+      infra.type: api
+    build:
+      context: ./
+      dockerfile: api/dev.Dockerfile
+    volumes:
+      - ./api/src:/app/src
+      - /app/node_modules
+    ports:
+      - 3000:3000
+  frontend:
+    restart: always
+    labels:
+      infra.type: frontend
+    environment:
+      API_PROXY_URL: http://api:3000
+    depends_on:
+      - api
+    build:
+      context: ./
+      dockerfile: frontend/dev.Dockerfile
+    volumes:
+      - ./frontend/src:/app/src
+      - /app/node_modules
+    ports:
+      - 4000:3000
