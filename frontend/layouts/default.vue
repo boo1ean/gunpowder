@@ -21,10 +21,9 @@
 							v-container(class="px-10" fluid)
 								v-row
 									v-col
-										v-btn(class="mt-n12" elevation="12" height="200" width="200" link nuxt to="/settings/collections" @click="settingsSheet = false") Collections
+										v-btn(class="mt-n12" elevation="12" height="200" width="200" link nuxt to="/collections" @click="settingsSheet = false") Collections
 		v-content
-			v-container
-				nuxt
+			nuxt
 </template>
 <style scoped>
 .nav-wrapper {
