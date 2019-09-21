@@ -27,7 +27,8 @@ v-layout(class="flex-column")
 			hide-default-footer
 		)
 			template(v-slot:item.action="{ item }")
-				v-icon(class="mr-2" @click="editItem(item)") mdi-circle-edit-outline
+				v-btn(icon @click="editItem(item)")
+					v-icon mdi-circle-edit-outline
 </template>
 
 <script>
@@ -70,6 +71,13 @@ export default {
 			headers,
 			items,
 		}
-	}
+	},
+	methods: {
+		editItem (item) {
+			this.$router.push({
+				path: `/collections/${item.id}`
+			})
+		}
+	},
 }
 </script>
