@@ -4,7 +4,7 @@ v-layout(class="flex-column")
 		v-toolbar-title Collections
 		div(class="flex-grow-1")
 		v-btn(icon)
-			v-icon mdi-heart
+			v-icon mdi-plus
 
 		v-menu(left bottom)
 			template(v-slot:activator="{ on }")

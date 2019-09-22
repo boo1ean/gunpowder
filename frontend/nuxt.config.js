@@ -25,12 +25,15 @@ export default {
   ** Global CSS
   */
   css: [
+  	  '~/assets/scss/index.scss',
   ],
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
-  ],
+
+    plugins: [
+        { src: '~plugins/vuedraggable.js', ssr: false }
+    ],
   /*
   ** Nuxt.js dev-modules
   */
