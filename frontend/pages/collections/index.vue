@@ -1,19 +1,23 @@
 <template lang="pug">
 v-layout(class="flex-column")
-	v-app-bar(color="accent-4" dense dark)
-		v-toolbar-title Collections
+	v-app-bar(app fixed elevate-on-scroll)
+		v-toolbar-title Manage Products collection
 		div(class="flex-grow-1")
-		v-btn(icon)
-			v-icon mdi-plus
-
-		v-menu(left bottom)
+		v-dialog(v-model="createDialog" max-width="600px")
 			template(v-slot:activator="{ on }")
-				v-btn(icon v-on="on")
-					v-icon mdi-dots-vertical
-
-			v-list
-				v-list-item(v-for="n in 5" :key="n" @click="() => {}")
-					v-list-item-title Option {{ n }}
+				v-btn(class="mr-0" v-on="on") create new
+			v-card
+				v-card-title
+					span(class="headline") New collection
+				v-card-text
+					v-container
+						v-row
+							v-col(cols="12")
+								v-text-field(label="Legal first name*" required)
+				v-card-actions
+					div(class="flex-grow-1")
+					v-btn(text @click="createDialog = false") close
+					v-btn(text @click="createDialog = false") save
 	v-container
 		v-data-table(
 			:headers="headers"
@@ -35,6 +39,7 @@ v-layout(class="flex-column")
 export default {
 	data () {
 		return {
+			createDialog: false,
 			selected: [],
 		}
 	},
